@@ -5,27 +5,27 @@ fun main(args: Array<String>) {
 }
 
 
-open class Banner (var string: String) {
-    fun showWithParen() {
+public open class Banner (var string: String) {
+    public fun showWithParen() {
         println("(" + string + ")")
     }
 
-    fun showWithAster() {
+    public fun showWithAster() {
         println("*" + string + "*")
     }
 }
 
 interface Print {
-    fun printWeak()
-    fun printStrong()
+    abstract fun printWeak()
+    abstract fun printStrong()
 }
 
-class PrintBanner(string: String): Banner(string), Print {
-    override fun printWeak() {
+public class PrintBanner(string: String): Banner(string), Print {
+    override public fun printWeak() {
         showWithParen()
     }
 
-    override fun printStrong() {
+    override public fun printStrong() {
         showWithAster()
     }
 }
