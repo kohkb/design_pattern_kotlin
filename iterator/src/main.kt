@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+fun main() {
     val bookShelf: BookShelf = BookShelf(4)
     bookShelf.appendBook(Book("hoge"))
     bookShelf.appendBook(Book("fuga"))
@@ -14,17 +14,17 @@ fun main(args: Array<String>) {
 }
 
 interface Aggregate {
-    public fun iterator(): Iterator
+    fun iterator(): Iterator
 }
 
 interface Iterator {
-    public fun hasNext(): Boolean
-    public fun next(): Any?
+    fun hasNext(): Boolean
+    fun next(): Any?
 }
 
 class Book (val name: String)
 
-class BookShelf (val maxsize: Int): Aggregate {
+class BookShelf (maxsize: Int): Aggregate {
     var last: Int = 0
     var books: Array<Book?> = arrayOfNulls<Book>(maxsize)
 
@@ -50,11 +50,7 @@ class BookShelfIterator(var bookShelf: BookShelf): Iterator {
     var index: Int = 0
 
     override fun hasNext(): Boolean {
-        if (index < bookShelf.getLength()) {
-            return true
-        } else {
-            return false
-        }
+        return index < bookShelf.getLength()
     }
 
     override fun next(): Book? {
